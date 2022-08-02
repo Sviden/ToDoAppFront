@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "sviden.github.io/todoappfront",
+  "homepage": "https://sviden.github.io/ToDoAppFront/",
   "dependencies": {
     "-": "^0.0.1",
     "@material-ui/core": "^4.12.3",
