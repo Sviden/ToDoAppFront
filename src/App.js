@@ -16,18 +16,18 @@ class App extends React.Component{
 
  render(){
    return ( 
-     <Router> 
+     <>
            <NavBar/>
      <Routes>  
-         <Route index element={<Login/>} />
+         <Route index element={<Login/>} exact path="/" />
          <Route path='/newtask'  element={<NewTaskForm/>}/>
          <Route path='/alltasks' element={<AllTasks/>}/>
          <Route path='/login' element={<Login/>}/>
          <Route path='/signup' element={<SignUp/>}/>
          
-         <Route path="*" element={<NoPage />} />
+         <Route path="/*" element={<NoPage />} />
        </Routes>   
-     </Router>
+       </>
         )
  }
 }
