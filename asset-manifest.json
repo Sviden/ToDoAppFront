@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/sviden.github.io/todoappfront/static/css/main.a8550520.chunk.css",
+    "main.js": "/sviden.github.io/todoappfront/static/js/main.64ade250.chunk.js",
+    "main.js.map": "/sviden.github.io/todoappfront/static/js/main.64ade250.chunk.js.map",
+    "runtime-main.js": "/sviden.github.io/todoappfront/static/js/runtime-main.c6841c79.js",
+    "runtime-main.js.map": "/sviden.github.io/todoappfront/static/js/runtime-main.c6841c79.js.map",
+    "static/css/2.88f44c77.chunk.css": "/sviden.github.io/todoappfront/static/css/2.88f44c77.chunk.css",
+    "static/js/2.0ee2fd37.chunk.js": "/sviden.github.io/todoappfront/static/js/2.0ee2fd37.chunk.js",
+    "static/js/2.0ee2fd37.chunk.js.map": "/sviden.github.io/todoappfront/static/js/2.0ee2fd37.chunk.js.map",
+    "static/js/3.ab6c5f51.chunk.js": "/sviden.github.io/todoappfront/static/js/3.ab6c5f51.chunk.js",
+    "static/js/3.ab6c5f51.chunk.js.map": "/sviden.github.io/todoappfront/static/js/3.ab6c5f51.chunk.js.map",
+    "index.html": "/sviden.github.io/todoappfront/index.html",
+    "static/css/2.88f44c77.chunk.css.map": "/sviden.github.io/todoappfront/static/css/2.88f44c77.chunk.css.map",
+    "static/css/main.a8550520.chunk.css.map": "/sviden.github.io/todoappfront/static/css/main.a8550520.chunk.css.map",
+    "static/js/2.0ee2fd37.chunk.js.LICENSE.txt": "/sviden.github.io/todoappfront/static/js/2.0ee2fd37.chunk.js.LICENSE.txt",
+    "static/media/bootstrap.min.css": "/sviden.github.io/todoappfront/static/media/glyphicons-halflings-regular.be810be3.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c6841c79.js",
+    "static/css/2.88f44c77.chunk.css",
+    "static/js/2.0ee2fd37.chunk.js",
+    "static/css/main.a8550520.chunk.css",
+    "static/js/main.64ade250.chunk.js"
+  ]
+}
