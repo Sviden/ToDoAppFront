@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 ReactDOM.render( 
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/ToDoAppFront'>
       <App />
     </BrowserRouter>
   </React.StrictMode>
