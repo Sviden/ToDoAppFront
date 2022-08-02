@@ -1,0 +1,50 @@
+@import "./global";
+
+
+ .onSignUp{
+  font-size: 2.6em;
+  @include login-signup-top-text;
+ }
+  
+
+.gifContainer{
+  height: 3em;
+  width: 3em;
+  bottom: 1%;
+}
+ 
+ 
+ .logOutContainer{
+  display: flex;
+  justify-content: flex-end;
+}
+
+ .logOutBtn {
+  font-size: 3em;
+  position: absolute;
+  color: $mainTextColor;
+  margin: 2% 2%; 
+ }
+
+ .noPage{
+  display: flex;
+  justify-content: flex-start;
+ }
+
+.onLogin{
+  font-size: 3em;
+ @include login-signup-top-text;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .onSignUp{
+
+    @include login-signup-top-text;    
+    margin: 10%;  
+    font-size: 1.6em;
+    font-weight: bolder;
+
+   }
+    
+}

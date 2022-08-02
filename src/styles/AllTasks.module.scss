@@ -1,0 +1,131 @@
+
+@import './global';
+
+.mainContainer{
+@include main-container-add-all;
+    
+}
+.tasksContainer{
+@include task-container-all-add;
+ margin-bottom: 3%;
+}
+
+.headerStyle{
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.liContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  list-style: none;
+  text-decoration: none;
+  border-bottom: 1.2px solid $mainTextColor;
+  overflow-wrap: break-word;
+}
+
+.titleContainer{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+
+
+.taskTitle{
+  display: flex;
+  cursor: pointer;
+  font-size: 2.3rem;
+  margin-left: 3%;
+}
+
+.taskCheckbox {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  color: $mainTextColor;
+
+}
+.taskCheckbox:checked + .taskTitle{
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  text-decoration: line-through;
+  text-decoration-color: $mainTextColor ;
+
+
+}
+
+
+.deleteTask{
+  cursor: pointer;
+  width: fit-content;
+}
+
+
+.userName{
+  display: flex;
+  justify-content: center;
+
+
+}
+
+.addTaskFooter{
+@include footer-add-all;
+margin-right: 0%;
+}
+
+.addTaskFooter a{
+  color: var(--main-dark-color);
+}
+.addTaskFooter a:hover{
+  color: var(--main-dark-color);
+  text-decoration: none;
+}
+
+.descriptionContainer{
+  white-space: initial !important; 
+
+}
+.descriptionContainer textarea{
+  white-space: initial !important; 
+  @include input-description-add-task;
+}
+.descriptionField{
+ white-space: initial !important; 
+ height: fit-content;
+ max-height: 3% !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .addTaskFooter{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    margin-left: -2%;
+    margin-bottom: 0%;
+    color: $mainTextColor;
+    box-shadow: 4px 4px 10px rgb(46, 46, 46);
+  
+  }
+ 
+  
+  .tasksContainer{
+    @include task-container-all-add;
+     margin-bottom: 1%;
+     margin-top: 6%;
+     width: 80%;
+     padding: 1%;
+    }
+
+    .titleContainer{
+      padding-left: 8%;
+    }
+
+}
