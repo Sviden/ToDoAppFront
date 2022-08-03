@@ -16,6 +16,7 @@
     "bootstrap-icons": "^1.7.2",
     "cleave": "^1.0.2",
     "cors": "^2.8.5",
+    "env-cmd": "^10.1.0",
     "gh-pages": "^4.0.0",
     "jquery": "^3.6.0",
     "lottie-web": "^5.9.6",
@@ -39,7 +40,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "dev": "env-cmd -f envs/.env.dev react-scripts build",
+    "prod": "env-cmd -f envs/.env.prod react-scripts build",
+    "predeploy": "npm run prod",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {

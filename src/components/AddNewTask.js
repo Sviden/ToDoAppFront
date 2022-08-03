@@ -28,7 +28,7 @@ export function NewTaskForm() {
             // alert('please add desc or title');
         } else {
             const date = await new Date().toDateString();
-            await Axios.post("https://exchangeappback.herokuapp.com/addtask", {
+            await Axios.post("https://svidentodoappback.herokuapp.com/addtask", {
                 taskTitle: taskTitle,
                 details: details,
                 dateToDo: moment(dateToDo).format("MMMM DD, YYYY"),
@@ -42,7 +42,7 @@ export function NewTaskForm() {
     const randPhrase = async () => {
         if (!randomPhrase) {
             const rnd = Math.floor(Math.random() * 6) + 1;
-            const res = await Axios.get("https://exchangeappback.herokuapp.com/newtask");
+            const res = await Axios.get("https://svidentodoappback.herokuapp.com/newtask");
             const phrase = res.data[rnd].text;
             setPhrase(phrase);
         }
