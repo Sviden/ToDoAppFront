@@ -29,11 +29,11 @@ export function AllTasks() {
     }, [details]);
 
     const getUserName = async (email) => {
-        const userData = await axios.get(`https://exchangeappback.herokuapp.com/username?email=${email}`);
+        const userData = await axios.get(`${process.env.REACT_APP_GET_USER_NAME}=${email}`);
         setUserName(userData.data);
     };
     const createTaskList = async () => {
-        const tasks = await Axios.get(`https://exchangeappback.herokuapp.com/alltasks?email=${userMail}`);
+        const tasks = await Axios.get(`${process.env.REACT_APP_ALL_TASKS}=${userMail}`);
         setTaskList(tasks.data);
     };
 
@@ -42,7 +42,7 @@ export function AllTasks() {
          let arr = checkedTask.filter(el => el !== task);
         setCheckTask(arr);
         console.log(id);
-        await Axios.delete(`https://exchangeappback.herokuapp.com/deletetask/${id}/${userMail}`);
+        await Axios.delete(`${process.env.REACT_APP_DELETE_TASK}/${id}/${userMail}`);
         createTaskList();
     };
 
@@ -53,7 +53,7 @@ export function AllTasks() {
     };
 
     const setUpdatedTask = async (id) => {
-        await Axios.put(`https://exchangeappback.herokuapp.com/updatetask/${id}`, {
+        await Axios.put(`${process.env.REACT_APP_UPDATE_TASK}/${id}`, {
             details: details,
         });
     };

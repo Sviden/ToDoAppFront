@@ -17,7 +17,7 @@ export function SignUp () {
    
    const onSubmit = async (e) => {
        e.preventDefault();
-      const newUser =  await axios.post("https://exchangeappback.herokuapp.com/signup", {
+      const newUser =  await axios.post(process.env.REACT_APP_SIGN_UP, {
           user: userName,
           password: userPassword,
           email: userEmail
@@ -65,7 +65,7 @@ export function SignUp () {
 
         <button type="submit" className={`btn ${styles.btn}`} onClick={(e) => onSubmit(e)}>Sign Up</button>
         <p className="forgot-password text-right">
-            Already have account?  <a href="/login">LOGIN</a>
+            Already have account?  <span onClick={() => navigate('/login')}>LOGIN</span>
         </p> 
 
     </form>

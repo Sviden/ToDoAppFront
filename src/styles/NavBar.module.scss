@@ -34,10 +34,17 @@
 .onLogin{
   font-size: 3em;
  @include login-signup-top-text;
+ margin-top: 2%;
 
 }
 
 @media only screen and (max-width: 600px) {
+  .onLogin{
+    font-size: 3em;
+   @include login-signup-top-text;
+   margin-top: 20%;
+  
+  }
   .onSignUp{
 
     @include login-signup-top-text;    
