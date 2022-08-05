@@ -1,5 +1,8 @@
 
 @import './global';
+body{
+  width: 100%;
+}
 
 .mainContainer{
 @include main-container-add-all;
