@@ -41,9 +41,8 @@ export function NewTaskForm() {
 
     const randPhrase = async () => {
         if (!randomPhrase) {
-            const rnd = Math.floor(Math.random() * 6) + 1;
             const res = await Axios.get(process.env.REACT_APP_RANDOM_PHRASE);
-            const phrase = res.data[rnd].text;
+            const phrase = res.data[0].text;
             setPhrase(phrase);
         }
     };
