@@ -48,6 +48,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.js"
+        ],
+        "rules": {
+          "react-hooks/exhaustive-deps": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -67,6 +77,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/react-edit-text": "^5.0.0"
+    "@types/react-edit-text": "^5.0.0",
+    "eslint": "^7.32.0"
   }
 }

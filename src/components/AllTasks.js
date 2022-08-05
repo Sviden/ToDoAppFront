@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import styles from "../styles/AllTasks.module.scss";
 import { EditTextarea } from "react-edit-text";
