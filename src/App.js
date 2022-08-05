@@ -24,7 +24,7 @@ class App extends React.Component {
           <Route path='/alltasks' element={<AllTasks />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path="/*" element={<NoPage />} />
+          <Route path='/*' element={<NoPage />} />
         </Routes>
       </>
     )
