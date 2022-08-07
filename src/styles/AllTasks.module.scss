@@ -79,6 +79,7 @@ body{
 .addTaskFooter{
 @include footer-add-all;
 position:fixed; 
+z-index: 3;
 
 }
 
@@ -108,7 +109,6 @@ position:fixed;
 @media only screen and (max-width: 600px) {
   .mainContainer{
     @include main-container-add-all-smallscreen;
-    position: sticky;
     min-height: 100vh;
   }
   
