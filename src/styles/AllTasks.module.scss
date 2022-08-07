@@ -7,7 +7,6 @@ body{
 
 .mainContainer{
 @include main-container-add-all;
-max-height: fit-content;
     
 }
 .tasksContainer{
@@ -112,7 +111,7 @@ max-height: fit-content;
   .tasksContainer{
     @include task-container-all-add;
      margin-bottom: 15%;
-     margin-top: 6%;
+     margin-top: 5%;
      width: 80%;
      padding: 1%;
     }
