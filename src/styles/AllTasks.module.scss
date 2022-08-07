@@ -2,7 +2,7 @@
 @import './global';
 body{
   width: 100vw;
-  height: fit-content;
+  // height: fit-content;
 }
 
 .mainContainer{
@@ -78,6 +78,8 @@ body{
 
 .addTaskFooter{
 @include footer-add-all;
+position:fixed; 
+
 }
 
 .addTaskFooter a{
@@ -106,7 +108,8 @@ body{
 @media only screen and (max-width: 600px) {
   .mainContainer{
     @include main-container-add-all-smallscreen;
-    
+    position: sticky;
+    min-height: 100vh;
   }
   
   .tasksContainer{
