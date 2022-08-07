@@ -94,7 +94,6 @@ text-transform: none;
 @media only screen and (max-width: 600px){
   .mainContainer{
     @include main-container-add-all-smallscreen;
-        position:absolute;
   }
   .cardContainer{
     @include task-container-all-add;
