@@ -3,6 +3,7 @@ import styles from "../styles/NavBar.module.scss";
 import { NavLink } from "react-router-dom";
 import {MdOutlineLogin} from "react-icons/md";
 import { BsArrowLeft } from 'react-icons/bs';
+import { HiOutlineLogin } from 'react-icons/hi';
 import { useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-web";
 import LottieOnLog from '../styles/img/login-anime.json'
@@ -51,7 +52,7 @@ export function NavBar() {
             <div className={styles.logOutContainer}>
                 <NavLink exact="true" to="/login" className={styles.logOutBtn} onClick={() => logOut()}>
                     {" "}
-                    {userLog ? <MdOutlineLogin/> : "Login"}
+                    {userLog ? <MdOutlineLogin/> : <HiOutlineLogin/>}
                 </NavLink>
             </div>
         );
