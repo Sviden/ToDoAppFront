@@ -93,14 +93,15 @@ text-transform: none;
 
 @media only screen and (max-width: 600px){
   .mainContainer{
-    height: 100vh;
-    justify-content: flex-start;
+    @include main-container-add-all-smallscreen;
+    // height: 100vh;
+    // justify-content: flex-start;
 
   }
   .cardContainer{
     @include task-container-all-add;
-     margin-bottom: 1%;
-     margin-top: 10%;
+     margin-bottom: 3%;
+     margin-top: 5%;
      width: 80%;
      height: 80%;
      padding: 1%;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useRef } from "react";
 import styles from "../styles/NavBar.module.scss";
 import { NavLink } from "react-router-dom";
-import { AiOutlineLogout } from "react-icons/ai";
+import {MdOutlineLogin} from "react-icons/md";
 import { BsArrowLeft } from 'react-icons/bs';
 import { useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-web";
@@ -51,7 +51,7 @@ export function NavBar() {
             <div className={styles.logOutContainer}>
                 <NavLink exact="true" to="/login" className={styles.logOutBtn} onClick={() => logOut()}>
                     {" "}
-                    {userLog ? <AiOutlineLogout /> : "Login"}
+                    {userLog ? <MdOutlineLogin/> : "Login"}
                 </NavLink>
             </div>
         );

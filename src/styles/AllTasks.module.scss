@@ -82,10 +82,10 @@ max-height: fit-content;
 }
 
 .addTaskFooter a{
-  color: var(--main-dark-color);
+  color: $mainTextColor;
 }
 .addTaskFooter a:hover{
-  color: var(--main-dark-color);
+  color: $mainTextColor;
   text-decoration: none;
 }
 
@@ -105,6 +105,9 @@ max-height: fit-content;
 
 
 @media only screen and (max-width: 600px) {
+  .mainContainer{
+    @include main-container-add-all-smallscreen;
+  }
   
   .tasksContainer{
     @include task-container-all-add;
