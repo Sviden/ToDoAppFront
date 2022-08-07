@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 
 
 
+
 export function AllTasks() {
     let [taskList, setTaskList] = useState([]);
     const [details, setUpdateDescription] = useState();
@@ -16,6 +17,7 @@ export function AllTasks() {
     const [userName, setUserName] = useState("");
     const [checkedTask, setCheckTask] = useState([]);
     const userMail = window.localStorage.getItem("email");
+
 
     useEffect(() => {
         const checkFromStorage = localStorage.getItem('checkedTasks');
@@ -37,12 +39,15 @@ export function AllTasks() {
     };
 
     const deleteOp = async (e, id) => {
-        const task = e.target.id;
+        const task = id;      
+        console.log(task);
+
         let arr = checkedTask.filter(el => el !== task);
         setCheckTask(arr);
-        console.log(id);
+        localStorage.setItem('checkedTasks', arr)
         await Axios.delete(`${process.env.REACT_APP_DELETE_TASK}/${id}/${userMail}`);
         createTaskList();
+        // window.location.reload();
     };
 
     const updateTask = async (e, id) => {
@@ -69,7 +74,7 @@ export function AllTasks() {
             setCheckTask(arr);
 
         }
-        console.log(arr, arr.length)
+        console.log(arr, task)
         arr.length === 0 ? localStorage.removeItem('checkedTasks') : localStorage.setItem('checkedTasks', arr);
     }
     return (
@@ -82,7 +87,7 @@ export function AllTasks() {
                     return (
                         <div id={key} key={key} className={`${styles.liContainer}`}>
                             <li className={`row ${styles.titleContainer}`}>
-                                <input className={styles.taskCheckbox} id={`custom-checkbox-${key}`} type="checkbox" name={el.key} ref={el.key} onChange={e => checkBoxHandler(e)} defaultChecked={checkedTask.includes(`custom-checkbox-${key}`) ? true : false}>
+                                <input className={styles.taskCheckbox} id={el._id} type="checkbox" name={el.key} onChange={e => checkBoxHandler(e)} defaultChecked={checkedTask.includes(`${el._id}`) ? true : false}>
                                 </input>
                                 <p className={styles.taskTitle}>
                                     {el.title}
@@ -91,7 +96,7 @@ export function AllTasks() {
                             <div className={styles.descriptionContainer}><EditTextarea rows={2} name="textbox1" defaultValue={el.description} onSave={(e) => updateTask(e, el._id)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} /></div>
                             <small className={styles.dateToDo}>{el.dateToDo}</small>
                             <br></br>
-                            <small onClick={(e) => deleteOp(e, el._id)} className={styles.deleteTask}> Delete</small>{" "}
+                            <small onClick={(e) => deleteOp(e, el._id)} className={styles.deleteTask} id={key}> Delete</small>{" "}
                         </div>
                     );
                 })}

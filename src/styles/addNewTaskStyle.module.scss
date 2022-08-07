@@ -78,9 +78,12 @@ text-transform: none;
 
 .backToAll{
 @include footer-add-all;
-  justify-content: flex-start;
   left: 2%;
 }
+
+ .backToAll a{
+  color: $mainTextColor;
+ }
 
 .backToAll a:hover{
   text-decoration: none;
@@ -122,26 +125,19 @@ text-transform: none;
     height: 10%;
   }
 
-  .backToAll{
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    font-size: 3em;
-    margin-left: -2%;
-    margin-bottom: 0%;
-    box-shadow: 4px 4px 10px rgb(46, 46, 46);
-
-}
- .backToAll a{
-  color: $mainTextColor;
- }
-
  .btnContainer{
   width: 100%;
   display: flex;
   justify-content: space-around;
  }
+ 
+.button:hover{
+  padding: 0% 2% 0% 2%;
+  color: var(--main-dark-color);
+  margin-top: 3%;
+  font-size: 2.7em;
+  cursor: pointer;
+  box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.356);
 
+}
 }
