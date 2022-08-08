@@ -36,6 +36,7 @@ export function Login() {
             setWrongInputDislay(true);
         } else {
             window.localStorage.setItem("email", resData.data.email);
+            window.localStorage.setItem("login", true);
             setWrongInputDislay(false);
             if (rememberMeCheck) {
                 localStorage.setItem("password", resData.data.password);
@@ -47,6 +48,7 @@ export function Login() {
 
     return (
         <>
+        
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className={styles.inputContainer}>
                     <label>Email</label>

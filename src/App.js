@@ -5,30 +5,30 @@ import { NavBar } from './components/NavBar';
 import { AllTasks } from './components/AllTasks';
 import NoPage from './components/NoPage';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Login } from './components/LogIn';
 import { SignUp } from './components/SignUp';
 
 
-// in react v6 <Switch> is  replaced with <Routes>!!!
 
-class App extends React.Component {
+function App(){
+ let login = localStorage.getItem("login")
+ let isNotLoggedIn = !login || login === "false";
 
-  render() {
     return (
       <>
         <NavBar />
         <Routes>
-          <Route index element={<Login />} exact path="/" />
-          <Route path='/newtask' element={<NewTaskForm />} />
-          <Route path='/alltasks' element={<AllTasks />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<SignUp />} />
+          <Route index element={isNotLoggedIn ? <Navigate to="/login" /> :<Navigate to="/alltasks" />} exact path="/" />
+          <Route path='/newtask' element={isNotLoggedIn ? <Navigate to="/login" /> : <NewTaskForm />} />
+          <Route path='/alltasks' element={isNotLoggedIn ? <Navigate to="/login" /> : <AllTasks />} />
+          <Route path='/login' element={!isNotLoggedIn ? <Navigate to="/alltasks" /> : <Login />} />
+          <Route path='/signup' element={!isNotLoggedIn ? <Navigate to="/alltasks" /> : <SignUp />} />
           <Route path='/*' element={<NoPage />} />
         </Routes>
       </>
     )
-  }
+
 }
 
 export default App;

@@ -12,22 +12,16 @@ import { NavLink } from "react-router-dom";
 
 export function AllTasks() {
     let [taskList, setTaskList] = useState([]);
-    const [details, setUpdateDescription] = useState();
-    const [updateID, setUpdateID] = useState();
     const [userName, setUserName] = useState("");
-    const [checkedTask, setCheckTask] = useState([]);
+    const [shouldRerender, setShouldRerender] = useState();
     const userMail = window.localStorage.getItem("email");
 
-
     useEffect(() => {
-        const checkFromStorage = localStorage.getItem('checkedTasks');
-        checkFromStorage && setCheckTask(checkFromStorage.split(','));
-        getUserName(userMail);
-        if (userMail) {
+            getUserName(userMail);
             createTaskList();
-            updateID && setUpdatedTask(updateID);
-        }
-    }, [details]);
+           
+
+    }, [shouldRerender]);
 
     const getUserName = async (email) => {
         const userData = await axios.get(`${process.env.REACT_APP_GET_USER_NAME}=${email}`);
@@ -35,48 +29,32 @@ export function AllTasks() {
     };
     const createTaskList = async () => {
         const tasks = await Axios.get(`${process.env.REACT_APP_ALL_TASKS}=${userMail}`);
+        console.log(tasks.data);
         setTaskList(tasks.data);
     };
 
     const deleteOp = async (e, id) => {
         const task = id;      
         console.log(task);
-
-        let arr = checkedTask.filter(el => el !== task);
-        setCheckTask(arr);
-        localStorage.setItem('checkedTasks', arr)
         await Axios.delete(`${process.env.REACT_APP_DELETE_TASK}/${id}/${userMail}`);
-        createTaskList();
-        // window.location.reload();
+        setShouldRerender(!shouldRerender);
     };
 
-    const updateTask = async (e, id) => {
-        setUpdateDescription(e.value);
-        setUpdateID(id);
-        console.log(details, updateID);
+    const updateTask = async (description, id, isChecked) => {
+        await setUpdatedTask(id, description, isChecked);
+        setShouldRerender(!shouldRerender);
+       
     };
 
-    const setUpdatedTask = async (id) => {
+    const setUpdatedTask = async (id, desc, isChecked) => {
         await Axios.put(`${process.env.REACT_APP_UPDATE_TASK}/${id}`, {
-            details: details,
+            details: desc,
+            isChecked: isChecked
         });
     };
 
-    const checkBoxHandler = (el) => {
-        const task = el.target.id;
-        let arr = checkedTask;
-        if (!arr.includes(task)) {
-            console.log('not includes ' + task);
-            arr.push(task);
 
-        } else {
-            arr = arr.filter(el => el !== task);
-            setCheckTask(arr);
 
-        }
-        console.log(arr, task)
-        arr.length === 0 ? localStorage.removeItem('checkedTasks') : localStorage.setItem('checkedTasks', arr);
-    }
     return (
         <div className={styles.mainContainer}>
             <div className={`container ${styles.tasksContainer}`}>
@@ -84,16 +62,17 @@ export function AllTasks() {
 
                 <h1 className={styles.headerStyle}>You have {taskList.length} tasks</h1>
                 {taskList.map((el, key) => {
+                    console.log(el);
                     return (
                         <div id={key} key={key} className={`${styles.liContainer}`}>
                             <li className={`row ${styles.titleContainer}`}>
-                                <input className={styles.taskCheckbox} id={el._id} type="checkbox" name={el.key} onChange={e => checkBoxHandler(e)} defaultChecked={checkedTask.includes(`${el._id}`) ? true : false}>
+                                <input className={styles.taskCheckbox} id={el._id} type="checkbox" name={el.key} onChange={async e => await updateTask(el.description, el._id, !el.isChecked)} checked={el.isChecked}>
                                 </input>
                                 <p className={styles.taskTitle}>
                                     {el.title}
                                 </p>
                             </li>
-                            <div className={styles.descriptionContainer}><EditTextarea rows={2} name="textbox1" defaultValue={el.description} onSave={(e) => updateTask(e, el._id)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} /></div>
+                            <div className={styles.descriptionContainer}><EditTextarea rows={2} name="textbox1" defaultValue={el.description} onSave={(e) => updateTask(e.value, el._id, el.isChecked)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} /></div>
                             <small className={styles.dateToDo}>{el.dateToDo}</small>
                             <br></br>
                             <small onClick={(e) => deleteOp(e, el._id)} className={styles.deleteTask} id={key}> Delete</small>{" "}

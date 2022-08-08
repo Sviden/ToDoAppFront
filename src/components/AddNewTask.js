@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import styles from "../styles/addNewTaskStyle.module.scss";
 import Axios from "axios";
@@ -6,7 +6,8 @@ import moment from "moment";
 import { AiOutlineCheck } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
+
 
 export function NewTaskForm() {
     const [taskTitle, setTaskTitle] = useState("");
@@ -16,6 +17,11 @@ export function NewTaskForm() {
     const [inputStyle, setInputStyle] = useState({});
     const inputTitle = useRef(null);
     const inputDetails = useRef(null);
+    const navigate = useNavigate();
+ 
+     useEffect(() => {
+        randPhrase();
+     })
 
     const clearInput = () => {
         setTaskTitle("");
@@ -35,6 +41,7 @@ export function NewTaskForm() {
                 createDate: date,
                 userEmail: window.localStorage.getItem("email"),
             });
+            navigate('/alltasks');
             clearInput();
         }
     };
@@ -46,7 +53,7 @@ export function NewTaskForm() {
             setPhrase(phrase);
         }
     };
-    randPhrase();
+
 
     const onInputChange = (e) => {
         setInputStyle({ backgroundColor: "rgba(255, 241, 230, 0.158)", color: "white" });

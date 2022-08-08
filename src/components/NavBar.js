@@ -24,7 +24,7 @@ export function NavBar() {
         autoplay: true, 
       });
         localStorage.getItem("email") ? setUserLog(true) : setUserLog(false);
-        console.log("Location changed " + location.pathname);
+
     }, [location]);
 
     const logOut = () => {
@@ -32,6 +32,8 @@ export function NavBar() {
             window.localStorage.clear();
         }
         setUserLog(false);
+        window.localStorage.setItem("login", false);
+
     };
 
     if (location.pathname === "/login" || location.pathname === "/") {
