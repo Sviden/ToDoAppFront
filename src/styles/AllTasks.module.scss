@@ -111,13 +111,14 @@ z-index: 3;
     @include main-container-add-all-smallscreen;
     position: static;
     min-height: 100vh;
+    background-image: none;
     background-color: $background-alltask-smallscreen;
   }
   
   .tasksContainer{
     @include task-container-all-add;
      margin-bottom: 15%;
-     margin-top: 5%;
+     margin-top: 10%;
      width: 80%;
      padding: 1%;
     }

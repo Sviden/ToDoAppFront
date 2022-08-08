@@ -59,8 +59,9 @@ export function Login() {
                             setEmail(e.target.value);
                         }}
                     />
-                    <small style={{ color: "red", display: wrongInput ? "block" : "none" }}>Check your Email</small>
                 </div>
+                <div className={styles.wrongEmail} style={{ color: "red", display: wrongInput ? "block" : "none" }}>Check your Email</div>
+
 
                 <div className={styles.inputContainer}>
                     <label for="passwod">Password</label>
@@ -77,8 +78,9 @@ export function Login() {
                     <span className={styles.eyeIcon} onClick={(e) => setShowPassword(!showPassword)}>
                         {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
                     </span>
-                    <small style={{ color: "red", display: wrongInput ? "block" : "none" }}>Check your Password</small>
-                </div>
+                </div>   
+                 <div className={styles.wrongEmail} style={{ color: "red", display: wrongInput ? "block" : "none" }}>Check your Password</div>
+
 
                 <div className={styles.rememberMeCheck}>
                     <div className="custom-control custom-checkbox">
