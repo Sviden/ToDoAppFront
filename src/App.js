@@ -10,10 +10,11 @@ import { Login } from './components/LogIn';
 import { SignUp } from './components/SignUp';
 
 
-
 function App(){
- let login = localStorage.getItem("login")
- let isNotLoggedIn = !login || login === "false";
+
+    let login = localStorage.getItem("login")
+    let isNotLoggedIn = !login || login === "false";
+
 
     return (
       <>
@@ -22,7 +23,7 @@ function App(){
           <Route index element={isNotLoggedIn ? <Navigate to="/login" /> :<Navigate to="/alltasks" />} exact path="/" />
           <Route path='/newtask' element={isNotLoggedIn ? <Navigate to="/login" /> : <NewTaskForm />} />
           <Route path='/alltasks' element={isNotLoggedIn ? <Navigate to="/login" /> : <AllTasks />} />
-          <Route path='/login' element={!isNotLoggedIn ? <Navigate to="/alltasks" /> : <Login />} />
+          <Route path='/login' element={!isNotLoggedIn? <Navigate to="/alltasks" /> : <Login />} />
           <Route path='/signup' element={!isNotLoggedIn ? <Navigate to="/alltasks" /> : <SignUp />} />
           <Route path='/*' element={<NoPage />} />
         </Routes>

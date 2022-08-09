@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -42,7 +42,7 @@ export function Login() {
                 localStorage.setItem("password", resData.data.password);
                 localStorage.setItem("rememberMeCheck", rememberMeCheck);
             }
-            navigate("/alltasks");
+            window.location.reload(true);
         }
     };
 

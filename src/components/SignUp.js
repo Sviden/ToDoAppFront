@@ -47,7 +47,7 @@ const onSubmit = async (e) => {
             <form className={styles.form}>
                 <div className={`form-group ${styles.inputField}`}>
                     <label>User name</label>
-                    <input maxLength={10} type="text" className="form-control" placeholder="User name" onChange={(e) => { setUserName(e.target.value) }} />
+                    <input maxLength={20} type="text" className="form-control" placeholder="User name" onChange={(e) => { setUserName(e.target.value) }} />
                 </div>
                 <div className={`form-group ${styles.inputField}`}>
                     <label>Email address</label>

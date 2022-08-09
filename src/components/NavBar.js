@@ -1,9 +1,8 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useEffect,useRef } from "react";
 import styles from "../styles/NavBar.module.scss";
 import { NavLink } from "react-router-dom";
 import {MdOutlineLogin} from "react-icons/md";
 import { BsArrowLeft } from 'react-icons/bs';
-import { HiOutlineLogin } from 'react-icons/hi';
 import { useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-web";
 import LottieOnLog from '../styles/img/login-anime.json'
@@ -12,7 +11,7 @@ export function NavBar() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [userLog, setUserLog] = useState(true);
+    // const [userLog, setUserLog] = useState(true);
     const animeLog = useRef(null);
 
     useEffect(() => {
@@ -23,7 +22,7 @@ export function NavBar() {
         loop: true, 
         autoplay: true, 
       });
-        localStorage.getItem("email") ? setUserLog(true) : setUserLog(false);
+        // localStorage.getItem("email") ? setUserLog(true) : setUserLog(false);
 
     }, [location]);
 
@@ -31,8 +30,10 @@ export function NavBar() {
         if (!localStorage.getItem("rememberMeCheck")) {
             window.localStorage.clear();
         }
-        setUserLog(false);
+        // setUserLog(false);
         window.localStorage.setItem("login", false);
+        // navigate('/login');
+        window.location.reload(true);
 
     };
 
@@ -53,8 +54,7 @@ export function NavBar() {
       return (
             <div className={styles.logOutContainer}>
                 <NavLink exact="true" to="/login" className={styles.logOutBtn} onClick={() => logOut()}>
-                    {" "}
-                    {userLog ? <MdOutlineLogin/> : <HiOutlineLogin/>}
+                  <MdOutlineLogin/> 
                 </NavLink>
             </div>
         );
