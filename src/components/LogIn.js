@@ -1,7 +1,9 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import Lottie from "lottie-web";
+import LottieOnLog from '../styles/img/login-anime.json'
 import styles from "../styles/login.module.scss";
 
 import axios from "axios";
@@ -13,8 +15,15 @@ export function Login() {
     const [rememberMeCheck, setRememberMeCheck] = useState(false);
     const [wrongInput, setWrongInputDislay] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
+    const animeLog = useRef(null);
     useEffect(() => {
+        Lottie.loadAnimation({
+            container: animeLog.current,
+            animationData: LottieOnLog,
+            renderer: "svg", 
+            loop: true, 
+            autoplay: true, 
+          });
         if (localStorage.getItem("rememberMeCheck")) {
             setPassword(localStorage.getItem("password"));
             setEmail(localStorage.getItem("email"));
@@ -48,6 +57,10 @@ export function Login() {
 
     return (
         <>
+                    <div className={styles.onLoginTopText}>
+                <p>Log In</p>
+                <div className={styles.gifContainer} ref={animeLog}></div>
+            </div>
         
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className={styles.inputContainer}>

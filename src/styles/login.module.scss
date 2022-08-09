@@ -75,8 +75,26 @@ form{
     font-size: x-small;
     margin-bottom: 2%;
 }
-
+.onLoginTopText{
+    font-size: 3em;
+   @include login-signup-top-text;
+   margin-top: 2%;
+  
+  }
+  .gifContainer{
+    height: 3em;
+    width: 3em;
+    bottom: 1%;
+  }
+   
 @media only screen and (max-width: 600px) {
+    .onLoginTopText{
+        font-size: 3em;
+       @include login-signup-top-text;
+       margin-top: 20%;
+      
+      }
+
     .btnSignUp{
         height: 50px;
         width: 50%;

@@ -11,25 +11,35 @@ export function SignUp() {
     const [userEmail, setEmail] = useState('');
     const [userPassword, setPassword] = useState('');
     const [userExist, setUserExist] = useState();
+    const [inputWarning, setInputWarning] = useState(false);
+    const [wrongInfoRender, setwrongInfoRender] = useState(false);
 
 const onSubmit = async (e) => {
     e.preventDefault();
-   const newUser =  await axios.post(process.env.REACT_APP_SIGN_UP, {
+    if(userName && userPassword && userEmail.includes("@")){
+
+     const newUser =  await axios.post(process.env.REACT_APP_SIGN_UP, {
        user: userName,
        password: userPassword,
        email: userEmail
-   }); 
-
-        console.log(newUser.data);
+      }); 
 
         if (newUser.data === 'userExist') {
             setUserExist(true);
+            setwrongInfoRender(true);
         } else {
             setUserExist(false);
+            setwrongInfoRender(false);
             window.localStorage.clear();
 
             navigate('/login');
         };
+    }
+    else{
+       setInputWarning(!inputWarning);
+       setwrongInfoRender(true);
+    }
+ 
 
 
     }
@@ -37,6 +47,8 @@ const onSubmit = async (e) => {
     const renderWarning = () => {
         if (userExist) {
             return <p style={{ color: 'red' }}>Email already in use, use another or login</p>
+        }else if(inputWarning){
+            return <p style={{ color: 'red' }}>Check your information</p>
         }
     }
 
@@ -52,14 +64,14 @@ const onSubmit = async (e) => {
                 <div className={`form-group ${styles.inputField}`}>
                     <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter email" onChange={(e) => { setEmail(e.target.value) }} />
-                    {renderWarning()}
+                   
                 </div>
 
                 <div className={`form-group ${styles.inputField}`}>
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Enter password" onChange={(e) => { setPassword(e.target.value) }} />
                 </div>
-
+              {wrongInfoRender ? renderWarning() : ""}
                 <button type="submit" className={`btn ${styles.btn}`} onClick={(e) => onSubmit(e)}>Sign Up</button>
         <p className="forgot-password text-right">
             Already have account?  <span onClick={() => navigate('/login')}>LOGIN</span>
