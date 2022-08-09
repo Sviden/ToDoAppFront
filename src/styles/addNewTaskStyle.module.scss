@@ -71,11 +71,6 @@ text-transform: none;
 }
 
 
-.noTitle{
-  border: 2px solid red;
-}
-
-
 .backToAll{
 @include footer-add-all;
   left: 2%;
@@ -117,15 +112,12 @@ text-transform: none;
   }
   .inputStyle{
     @include input-description-add-task;
-    height: 10%;
+    height: 13%;
     margin: 2%;
     width: 90%;
     padding: 0%;
   }
-  .inputStyle #title{
-    border: 2px solid red;
-    height: 10%;
-  }
+
 
  .btnContainer{
   width: 100%;
