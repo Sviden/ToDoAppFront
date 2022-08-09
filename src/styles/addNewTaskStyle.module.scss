@@ -89,7 +89,9 @@ text-transform: none;
   text-decoration: none;
 }
 
-
+.inputDate{
+  overflow: hidden !important;
+}
 
 @media only screen and (max-width: 600px){
   .mainContainer{

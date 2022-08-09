@@ -72,7 +72,9 @@ export function AllTasks() {
                                     {el.title}
                                 </p>
                             </li>
-                            <div className={styles.descriptionContainer}><EditTextarea rows={2} name="textbox1" defaultValue={el.description} onSave={(e) => updateTask(e.value, el._id, el.isChecked)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} /></div>
+                            <div className={styles.descriptionContainer}>
+                                <EditTextarea rows={2} name="textbox1" value={el.description} onSave={(e) => updateTask(e.value, el._id, el.isChecked)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} />
+                            </div>
                             <small className={styles.dateToDo}>{el.dateToDo}</small>
                             <br></br>
                             <small onClick={(e) => deleteOp(e, el._id)} className={styles.deleteTask} id={key}> Delete</small>{" "}

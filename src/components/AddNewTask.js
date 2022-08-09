@@ -105,7 +105,7 @@ export function NewTaskForm() {
                 <label>Date:</label>
                 <input
                     type="date"
-                    className={`form-control ${styles.inputStyle}`}
+                    className={`form-control ${styles.inputDate} ${styles.inputStyle} `}
                     value={dateToDo}
                     style={inputStyle}
                     onChange={(e) => {

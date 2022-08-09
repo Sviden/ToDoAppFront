@@ -34,15 +34,25 @@ body{
   display: flex;
   flex-direction: row;
   align-content: center;
+  height: fit-content;
+  width: 100%;
+
 }
 
 
 
 .taskTitle{
   display: flex;
-  cursor: pointer;
   font-size: 2.3rem;
-  margin-left: 3%;
+  margin-left: 2%;
+  width: 85%;  
+  height: fit-content;
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: auto;
+
 }
 
 .taskCheckbox {
@@ -53,9 +63,11 @@ body{
 
 }
 .taskCheckbox:checked + .taskTitle{
+  display: flex;
+  white-space: pre;
+  overflow-wrap: break-word;
   cursor: pointer;
-  height: 20px;
-  width: 20px;
+  height: fit-content;
   text-decoration: line-through;
   text-decoration-color: $mainTextColor ;
 
@@ -98,6 +110,7 @@ z-index: 3;
 .descriptionContainer textarea{
   white-space: initial !important; 
   @include input-description-add-task;
+  overflow: auto;
 }
 .descriptionField{
  white-space: initial !important; 
@@ -108,7 +121,7 @@ z-index: 3;
 
 @media only screen and (max-width: 600px) {
   .mainContainer{
-    @include main-container-add-all-smallscreen;
+    // @include main-container-add-all-smallscreen;
     position: static;
     min-height: 100vh;
     background-image: none;
@@ -125,6 +138,11 @@ z-index: 3;
 
     .titleContainer{
       padding-left: 8%;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      height: fit-content;
+      width: 100%;
     }
 
 }
