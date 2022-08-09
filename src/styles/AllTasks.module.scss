@@ -121,7 +121,7 @@ z-index: 3;
 
 @media only screen and (max-width: 600px) {
   .mainContainer{
-    // @include main-container-add-all-smallscreen;
+    @include main-container-add-all-smallscreen;
     position: static;
     min-height: 100vh;
     background-image: none;
