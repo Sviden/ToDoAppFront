@@ -14,7 +14,7 @@ export function AllTasks() {
     let [taskList, setTaskList] = useState([]);
     const [userName, setUserName] = useState("");
     const [shouldRerender, setShouldRerender] = useState();
-    const [newDescription, setNewDescription] = useState();
+    const [newDescription, setNewDescription] = useState({});
     const userMail = window.localStorage.getItem("email");
 
     useEffect(() => {
@@ -53,7 +53,12 @@ export function AllTasks() {
             isChecked: isChecked
         });
     };
-
+  
+    const onDescriptionChange =(e)=>{
+        console.log(e.target.id);
+        const x = {id: e.target.id, value: e.target.value};
+        setNewDescription(x);
+    }
 
 
     return (
@@ -74,7 +79,7 @@ export function AllTasks() {
                                 </p>
                             </li>
                             <div className={styles.descriptionContainer}>
-                                <EditTextarea rows={2} name="textbox1" value={newDescription ? newDescription : el.description} onChange={e => setNewDescription(e.target.value)} onSave={(e) => updateTask(e.value, el._id, el.isChecked)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} />
+                                <EditTextarea rows={2} id={key.toString()} value={newDescription.id === key.toString() ? newDescription.value : el.description} onChange={e => onDescriptionChange(e)} onSave={(e) => updateTask(newDescription.value, el._id, el.isChecked)} className={styles.descriptionField} style={{ whiteSpace: "initial", height: "fit-content" }} />
                             </div>
                             <small className={styles.dateToDo}>{el.dateToDo}</small>
                             <br></br>
